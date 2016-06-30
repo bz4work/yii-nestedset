@@ -132,8 +132,6 @@ class TreeController extends Controller
 				$result .= "</li>";
 			}
 			$result .= "</ul>";
-		}else{
-
 		}
 
 		return $result;

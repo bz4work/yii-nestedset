@@ -15,7 +15,7 @@ class TreeController extends Controller
 
 		$root = Tree::model()->findByPK(1);
 
-		/*$newNode = new Tree();
+		$newNode = new Tree();
 		$newNode->name = "First Node";
 		$root->appendChild($newNode); //You do not have to use the "save" function here.
 
@@ -25,7 +25,7 @@ class TreeController extends Controller
 
 		$newNode3 = new Tree();
 		$newNode3->name = "GrandChild Node";
-		$newNode->appendChild($newNode3); //You do not have to use the "save" function here.*/
+		$newNode->appendChild($newNode3); //You do not have to use the "save" function here.
 
 		echo "<h3>Start Tree</h3>";
 		$tree2 = $root->getNestedTree();
@@ -36,7 +36,7 @@ class TreeController extends Controller
 
 		// Let's do some modifications:
 
-		/*$newNode2->moveLeft(); //You do not have to use the "save" function here.
+		$newNode2->moveLeft(); //You do not have to use the "save" function here.
 		echo "<h3>Move Second Node to the left</h3>";
 		$tree2 = $root->getNestedTree();
 		foreach($tree2 as $key => $subtree)
@@ -106,7 +106,7 @@ class TreeController extends Controller
 		foreach($tree2 as $key => $subtree)
 		{
 			echo $key.": ".$this->printNestedTree($subtree);
-		}*/
+		}
 		$message = ob_get_clean();
 
 		$this->render('index',array('message' => $message));
@@ -118,17 +118,9 @@ class TreeController extends Controller
 
 		$result = "<strong>".$tree['node']->name."</strong> (".$tree['node']->getLeftValue().",".$tree['node']->getRightValue().")";
 
-		//echo is_array($tree['children'])?'yes':'no';
-
-		foreach ($tree['children'] as $key=>$child) {
-			echo $key."<br>";
-			//echo is_array($child)?'yes<br>':'no<br>';
-			echo array_key_exists('children',$child)?'yes<br>':'no<br>';
-
 		}
 
-		//if(is_array($tree['children']))
-		if(array_key_exists('children',$tree))
+		if(is_array($tree['children']))
 		{
 			$result .= "<ul>";
 
